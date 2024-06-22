@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1719082078917,
+      "tag": "0000_panoramic_kinsey_walden",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1719082683772,
+      "tag": "0001_good_norman_osborn",
+      "breakpoints": true
+    }
+  ]
+}
