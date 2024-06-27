@@ -225,7 +225,7 @@ const app = new Hono()
             const transactionsToUpdate = db.$with("transactions_to_update").as(
                 db.select({id: transactions.id})
                 .from(transactions)
-                .innerJoin(transactions, eq(transactions.accountId, accounts.id))
+                .innerJoin(accounts, eq(transactions.accountId, accounts.id))
                 .where(and(
                     eq(transactions.id, id),
                     eq(accounts.userId, auth.userId)
