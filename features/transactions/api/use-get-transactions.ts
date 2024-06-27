@@ -3,6 +3,7 @@
 
  import {client} from "@/lib/hono";
 import { Economica } from "next/font/google";
+import { convertAmountFromMiliUnits } from "@/lib/utils";
 
  export const useGetTransactions = () => {
 
@@ -28,7 +29,10 @@ import { Economica } from "next/font/google";
             }
 
             const {data} = await response.json();
-            return data;
+            return data.map((transaction) => ({
+                ...transaction,
+                amount: convertAmountFromMiliUnits(transaction.amount)
+            }));
         }
     })
     return query;

@@ -144,7 +144,7 @@ const app = new Hono()
 
             const transactionsToDelete = db.$with("transactions_to_delete").as(
                 db.select({id: transactions.id}).from(transactions)
-                .innerJoin(transactions, eq(transactions.accountId, accounts.id))
+                .innerJoin(accounts, eq(transactions.accountId, accounts.id))
                 .where(and(
                     inArray(transactions.id, values.ids),
                     eq(accounts.userId, auth.userId)
@@ -269,7 +269,7 @@ const app = new Hono()
             const transactionsToDelete = db.$with("transactions_to_delete").as(
                 db.select({id: transactions.id})
                 .from(transactions)
-                .innerJoin(transactions, eq(transactions.accountId, accounts.id))
+                .innerJoin(accounts, eq(transactions.accountId, accounts.id))
                 .where(and(
                     eq(transactions.id, id),
                     eq(accounts.userId, auth.userId)
