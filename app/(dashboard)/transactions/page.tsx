@@ -45,7 +45,6 @@ const TransactionsPage = () => {
     const onCancelImport = () => {
         setImportResults(INITIAL_IMPORT_RESULTS);
         setVariant(VARIANTS.LIST);
-        //8:06:37
     };
 
     const newTransaction = useNewTransaction();
@@ -93,8 +92,12 @@ const TransactionsPage = () => {
                     <CardTitle className="text-xl line-clamp-1">
                         Transaction History
                     </CardTitle>
-                    <div className="flex items-center gap-x-2">
-                        <Button size="sm" onClick={newTransaction.onOpen}>
+                    <div className="flex items-center gap-x-2 flex-col lg:flex-row gap-y-2">
+                        <Button 
+                            size="sm" 
+                            onClick={newTransaction.onOpen}
+                            className="w-full lg:w-auto "
+                        >
                             <Plus className="size-4 mr-2" />
                             Add New
                         </Button>
