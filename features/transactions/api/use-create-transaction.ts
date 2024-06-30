@@ -21,7 +21,7 @@ export const UseCreateTransaction = () => {
             return await response.json();
         },
         onSuccess: () => {
-            toast.success("Account Created");
+            toast.success("Transaction Created");
             queryCLient.invalidateQueries({queryKey: ["transactions"]});
             //TODO: Invalidate summary
         },
