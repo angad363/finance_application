@@ -6,7 +6,7 @@ import {
     LineChart,
     Line,
     ResponsiveContainer,
-    CartesianGrid
+    CartesianGrid,
 } from "recharts";
 
 import { CustomTooltip } from "./custom-tooltip";
