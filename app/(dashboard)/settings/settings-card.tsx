@@ -11,10 +11,35 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { PlaidConnect } from "@/features/plaid/components/plaid-connect";
+import { useGetConnectedBank } from "@/features/plaid/api/use-get-connected-bank";
+import { PlaidDisConnect } from "@/features/plaid/components/plaid-disconnect";
+
+import { Skeleton } from "@/components/ui/skeleton";
+import { Loader2 } from "lucide-react";
 
 export const SettingsCard = () => {
 
-    const connectedBank = null;
+    const {
+        data: connectedBank,
+        isLoading: isLoadingConnectedBank
+    } = useGetConnectedBank();
+
+    if(isLoadingConnectedBank){
+        return(
+            <Card className="border-none drop-shadow-sm">
+                <CardHeader>
+                    <CardTitle className="text-xl line-clamp-1">
+                        <Skeleton className="h-6 w-24" />
+                    </CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <div className="h-[350px] w-full flex items-center justify-center">
+                        <Loader2 className="size-6 text-slate-300 animate-spin" />
+                    </div>
+                </CardContent>
+            </Card>
+        )
+    }
 
     return(
         <Card className="border-none drop-shadow-sm">
@@ -38,7 +63,7 @@ export const SettingsCard = () => {
                             "Bank account connected"
                             : "No Bank account connected"}
                         </div>
-                        <PlaidConnect />
+                        {connectedBank ? <PlaidDisConnect /> : <PlaidConnect />}
                     </div>
                 </div>
             </CardContent>
