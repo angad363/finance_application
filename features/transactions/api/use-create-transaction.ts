@@ -23,7 +23,7 @@ export const UseCreateTransaction = () => {
         onSuccess: () => {
             toast.success("Transaction Created");
             queryCLient.invalidateQueries({queryKey: ["transactions"]});
-            //TODO: Invalidate summary
+            queryCLient.invalidateQueries({queryKey: ["summary"]});
         },
         onError: () => {
             toast.error("Failed to create Transaction");

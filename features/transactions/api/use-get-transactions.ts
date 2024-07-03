@@ -13,7 +13,7 @@ import { convertAmountFromMiliUnits } from "@/lib/utils";
     const accountId = params.get("accountId") || "";
 
     const query = useQuery({
-        // TODO: check if params are needed in key
+
         queryKey: ["transactions", {from, to ,accountId}],
         queryFn: async () => {
             const response = await client.api.transactions.$get({
