@@ -13,7 +13,7 @@ export const useCreateLinkToken = () => {
         ResponseType,
         Error
     >({
-        mutationFn: async(json) => {
+        mutationFn: async() => {
             const response = await client.api.plaid["create-link-token"].$post();
 
             if(!response.ok){
