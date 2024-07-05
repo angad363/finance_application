@@ -16,6 +16,7 @@ import { PlaidDisConnect } from "@/features/plaid/components/plaid-disconnect";
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { Loader2 } from "lucide-react";
+import { SubscriptionCheckout } from "@/features/subscriptions/components/subscription-checkout";
 
 export const SettingsCard = () => {
 
@@ -23,6 +24,8 @@ export const SettingsCard = () => {
         data: connectedBank,
         isLoading: isLoadingConnectedBank
     } = useGetConnectedBank();
+
+    const subscription = null;
 
     if(isLoadingConnectedBank){
         return(
@@ -64,6 +67,23 @@ export const SettingsCard = () => {
                             : "No Bank account connected"}
                         </div>
                         {connectedBank ? <PlaidDisConnect /> : <PlaidConnect />}
+                    </div>
+                </div>
+                <Separator />
+                <div className="flex flex-col gap-y-2 lg:flex-row items-center py-4">
+                    <p className="text-sm font-medium w-full lg:w-[16.5rem]">
+                        Subscription
+                    </p>
+                    <div className="w-full flex items-center justify-between">
+                        <div className={cn(
+                            "text-sm truncate flex items-center",
+                            !connectedBank && "text-muted-foreground"
+                        )}>
+                            {connectedBank ?
+                            "Subscription active"
+                            : "No subscription active"}
+                        </div>
+                        {subscription ? <SubscriptionCheckout /> : <SubscriptionCheckout />}
                     </div>
                 </div>
             </CardContent>
